@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# Ensure that user-installed programs take precedence over system-provided ones
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH";
+
+# set Python I/O encodeding to UTF-8 to avoid encoding issues
+export PYTHONIOENCODING='UTF-8';
+
+# Ignore duplicate commands and commands starting with a space.
+export HISTCONTROL='ignoreboth';
+
+# Append history to the file instead of overwriting it.
+shopt -s histappend
+
+# Set History Size
+export HISTSIZE='1000';
+export HISTFILESIZE="2000";
+
+# Update LINES and COLUMNS after checking window size
+shopt -s checkwinsize
+
+# solve GnuPG TTY problem
+export GPG_TTY=$(tty);
