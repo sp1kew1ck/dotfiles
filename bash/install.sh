@@ -14,10 +14,10 @@ SOURCE_DIR="$DOTFILES_BASE_DIR/bash"
 # List of configuration files to process (source filename -> target dotfile name)
 # Note: Target filenames are dotfiles (hidden files) starting with a dot.
 declare -A FILES_TO_INSTALL=(
-    ["bashrc"]=".bashrc"
-    ["exports"]=".exports"
-    ["aliases"]=".aliases"
-    ["functions"]=".functions"
+    [".bashrc"]=".bashrc"
+    [".exports"]=".exports"
+    [".aliases"]=".aliases"
+    [".functions"]=".functions"
 )
 
 echo "Starting Bash configuration deployment..."
