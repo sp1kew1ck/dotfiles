@@ -1,0 +1,56 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+
+$cmd_duration\
+$line_break\
+$character"""
+
+[directory]
+style = "blue"
+
+[character]
+disabled = false
+success_symbol = '[❯](fg:#4BB543)'
+error_symbol = '[❯](fg:#ff0000)'
+vimcmd_symbol = '[❮](fg:#4BB543)'
+vimcmd_replace_one_symbol = '[❮](fg:lavender)'
+vimcmd_replace_symbol = '[❮](fg:lavender)'
+vimcmd_visual_symbol = '[❮](fg:yellow)'
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state($progress_current/$progress_total)]($style)\)'
+style = "bright-black"
+
+[cmd_duration]
+show_milliseconds = true
+format = "[$duration]($style) "
+style = "#E9D502"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
+detect_extensions = []
+detect_files = []
