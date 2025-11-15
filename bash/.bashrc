@@ -87,7 +87,15 @@ fi
 # 4. Third-party tool initialization
 
 # conda
-eval "$($HOME/miniforge3/bin/conda shell.bash hook)"
+# Check if conda exists
+if [ -f "$HOME/miniforge3/bin/conda" ]; then
+    # make sure shell.bash hook can be executed
+    if [ -x "$HOME/miniforge3/bin/conda" ]; then
+        eval "$($HOME/miniforge3/bin/conda shell.bash hook)"
+    fi
+fi
 
-# starship (或任何其他 Prompt 管理器)
-eval "$(starship init bash)"
+# starship
+if command -v starship &> /dev/null; then
+    eval "$(starship init bash)"
+fi
