@@ -23,18 +23,18 @@ else
   fi
 fi
 
-# 2. Ensure ~/bin is in PATH (write to ~/.bashrc but avoid duplicates)
-grep -qxF 'export PATH="$HOME/bin:$PATH"' "$BASHRC" \
-  || echo 'export PATH="$HOME/bin:$PATH"' >> "$BASHRC"
+# # 2. Ensure ~/bin is in PATH (write to ~/.bashrc but avoid duplicates)
+# grep -qxF 'export PATH="$HOME/bin:$PATH"' "$BASHRC" \
+#   || echo 'export PATH="$HOME/bin:$PATH"' >> "$BASHRC"
 
-# Ensure starship init line is present
-INIT_LINE='eval "$(starship init bash)"'
-grep -qxF "$INIT_LINE" "$BASHRC" \
-  || echo "$INIT_LINE" >> "$BASHRC"
+# # Ensure starship init line is present
+# INIT_LINE='eval "$(starship init bash)"'
+# grep -qxF "$INIT_LINE" "$BASHRC" \
+#   || echo "$INIT_LINE" >> "$BASHRC"
 
-# Reload ~/.bashrc (for current shell session)
-echo "Reloading $BASHRC ..."
-source "$BASHRC"
+# # Reload ~/.bashrc (for current shell session)
+# echo "Reloading $BASHRC ..."
+# source "$BASHRC"
 
 # 3. Configuration file handling
 echo "Linking starship configuration file ..."
