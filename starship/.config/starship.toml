@@ -1,0 +1,195 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$os\
+$username\
+
+$directory\
+
+$git_branch\
+$git_state\
+$git_status\
+
+$c\
+$cpp\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+
+$docker_context\
+$conda\
+$pixi\
+
+$time\
+$cmd_duration\
+$line_break\
+$character"""
+
+[os]
+disabled = false
+style = "blue"
+format = "[$symbol ]($style)"
+
+[os.symbols]
+Windows = "WIN"
+Ubuntu = "Ubuntu"
+SUSE = "SUSE"
+Raspbian = "RasPi"
+Mint = "Mint"
+Macos = "macOS"
+Manjaro = "Manjaro"
+Linux = "Linux"
+Gentoo = "Gentoo"
+Fedora = "Fedora"
+Alpine = "Alpine"
+Amazon = "Amazon"
+Android = "Android"
+Arch = "Arch"
+Artix = "Artix"
+EndeavourOS = "Endeavour"
+CentOS = "CentOS"
+Debian = "Debian"
+Redhat = "RedHat"
+RedHatEnterprise = "RHEL"
+Pop = "Pop!_OS"
+
+[username]
+show_always = true
+style_user = "blue"
+style_root = "red"
+format = '[$user]($style) '
+
+[hostname]
+ssh_only = false
+format = "[@$hostname]($style) "
+style = "bright-black"
+
+[directory]
+style = "blue"
+format = "[$path]($style) "
+truncation_length = 3
+truncation_symbol = ".../"
+
+# [directory.substitutions]
+# "Documents" = "Docs"
+# "Downloads" = "DL"
+# "Music" = "Music"
+# "Pictures" = "Pics"
+# "Developer" = "Dev"
+
+[git_branch]
+format = "[$branch]($style) "
+style = "bright-black"
+symbol = "git"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style) "
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+format = '\([$state($progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[nodejs]
+symbol = "node"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[c]
+symbol = "C"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[cpp]
+symbol = "C++"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[rust]
+symbol = "rs"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[golang]
+symbol = "go"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[php]
+symbol = "php"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[java]
+symbol = "java"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[kotlin]
+symbol = "kt"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[haskell]
+symbol = "hs"
+style = "green"
+format = '[$symbol( $version) ]($style)'
+
+[python]
+symbol = "py"
+format = "[$symbol( $version)( $virtualenv) ]($style)"
+style = "green"
+
+[docker_context]
+symbol = "docker"
+style = "blue"
+format = '[$symbol( $context) ]($style)'
+
+[conda]
+symbol = "conda"
+style = "blue"
+format = '[$symbol( $environment) ]($style)'
+ignore_base = false
+
+[pixi]
+symbol = "pixi"
+style = "blue"
+format = '[$symbol( $version)( $environment) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bright-black"
+format = '[$time ]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](fg:#4BB543)'
+error_symbol = '[❯](fg:#ff0000)'
+vimcmd_symbol = '[❮](fg:#4BB543)'
+vimcmd_replace_one_symbol = '[❮](fg:purple)'
+vimcmd_replace_symbol = '[❮](fg:purple)'
+vimcmd_visual_symbol = '[❮](fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = "[$duration]($style) "
+style = "#E9D502"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000

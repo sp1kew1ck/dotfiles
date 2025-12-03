@@ -16,7 +16,7 @@ fi
 MINIFORGE_INSTALLER="Miniforge3-Linux-x86_64.sh"
 MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download/${MINIFORGE_INSTALLER}"
 # 定义要检查和追加的 Conda 激活行 (使用 $HOME 以确保路径正确)
-CONDA_EVAL_LINE='eval "$($HOME/miniforge3/bin/conda shell.bash hook)"'
+# CONDA_EVAL_LINE='eval "$($HOME/miniforge3/bin/conda shell.bash hook)"'
 BASHRC="$HOME/.bashrc"
 
 # 1. install miniforge
@@ -39,17 +39,17 @@ conda init
 echo "4. Checking for single-line Conda hook in $BASHRC..."
 # -q: quiet mode
 # -F: fixed string search
-if ! grep -qF "$CONDA_EVAL_LINE" "$BASHRC"; then
-    echo "Specific Conda eval hook not found. Appending it to $BASHRC..."
+# if ! grep -qF "$CONDA_EVAL_LINE" "$BASHRC"; then
+#     echo "Specific Conda eval hook not found. Appending it to $BASHRC..."
     
-    # append to .bashrc
-    echo "" >> "$BASHRC"
-    echo "# --- Conda Immediate Activation Hook ---" >> "$BASHRC"
-    echo "# (This line allows immediate use of the base environment in new shells)" >> "$BASHRC"
-    echo "$CONDA_EVAL_LINE" >> "$BASHRC"
-else
-    echo "Specific Conda eval hook already present in $BASHRC. No changes made to the hook."
-fi
+#     # append to .bashrc
+#     echo "" >> "$BASHRC"
+#     echo "# --- Conda Immediate Activation Hook ---" >> "$BASHRC"
+#     echo "# (This line allows immediate use of the base environment in new shells)" >> "$BASHRC"
+#     echo "$CONDA_EVAL_LINE" >> "$BASHRC"
+# else
+#     echo "Specific Conda eval hook already present in $BASHRC. No changes made to the hook."
+# fi
 
 echo "Miniforge installation and configuration successfully complete."
 echo "Please run 'source $BASHRC' or restart your terminal to activate Conda."
