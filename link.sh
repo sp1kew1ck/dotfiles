@@ -105,5 +105,6 @@ install_module bash
 install_module tmux
 # 示例：跳过 starship 模块中的 install.sh 和 catppuccin.toml
 install_module starship "$HOME" "install.sh catppuccin.toml pure-text.toml"
+install_module vim
 
 echo "---- Done ----"
