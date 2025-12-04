@@ -59,10 +59,40 @@ augroup numbertoggle
 augroup END
 
 set cursorline " Highlight the current row
-set textwidth=80
+
+" Displays automatic line wrapping, without inserting newline characters.
+set wrap
+set wrapmargin=2 " The number of blank characters between the line break and the right edge of the editing window.
+set linebreak " Do not wrap inside words
+" set textwidth=80
+
+" When scrolling vertically, 
+" the cursor's position from the top/bottom (in lines).
+set scrolloff=5
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
+
+" Display the current cursor position (row and column) in the status bar.
+set ruler
+
+" ================ search ================
+
+" This setting makes search case-insensitive when all characters in the string
+" being searched are lowercase. However, the search becomes case-sensitive if
+" it contains any capital letters. This makes searching more convenient.
+set ignorecase
+set smartcase
+
+" Enable searching as you type, rather than waiting till you press enter.
+set incsearch
+set hlsearch " highlight 
+
+" When the cursor encounters a parenthesis,
+" the corresponding parenthesis is automatically highlighted.
+set showmatch  
+
+" ================ edit ================
 
 " The backspace key has slightly unintuitive behavior by default. For example,
 " by default, you can't backspace before the insertion point set with 'i'.
@@ -77,24 +107,35 @@ set backspace=indent,eol,start
 " for more information on this.
 set hidden
 
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
-
-" Enable searching as you type, rather than waiting till you press enter.
-set incsearch
-
-" Unbind some useless/annoying default key bindings.
-nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
-
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 
 
 " system clipboard
 set clipboard=unnamed
+
+" auto change pwd when open new file
+set autochdir
+
+" keep undo history
+set undofile
+
+" auto reload file when change by others
+set autoread
+
+set history=1000
+
+set spell spelllang=en_us
+
+" In command mode, pressing the Tab key will 
+" automatically complete the bottom operation commands.
+set wildmenu
+set wildmode=longest:list,full
+
+" ================ shortcut ================
+
+" Unbind some useless/annoying default key bindings.
+nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 
 " Try to prevent bad habits like using the arrow keys for movement. This is
 " not the only possible bad habit. For example, holding down the h/j/k/l keys
