@@ -11,11 +11,34 @@
 " `vim -u foo`).
 set nocompatible
 
-" Turn on syntax highlighting.
-syntax on
+" ================ basic config ================
+
+syntax on " Turn on syntax highlighting.
+set showmode
+set showcmd
+
+" Enable mouse support. You should avoid relying on this too much, but it can
+" sometimes be convenient.
+set mouse+=a
+set encoding=utf-8
+set t_Co=256
+
+" Enable file type detection and auto-indentation support. When editing .py files, 
+" Vim will look for Python's indentation rules in ~/.vim/indent/python.vim.
+filetype plugin indent on 
 
 " Disable the default Vim startup message.
 set shortmess+=I
+
+" ================ indent ================
+
+set expandtab " Use spaces instead of tabs
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+
+" ================ number, cursor, display ================
 
 " Show line numbers.
 set number
@@ -28,11 +51,15 @@ set number
 " down.
 set relativenumber
 
+" Insert mode uses absolute line numbers
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
+
+set cursorline " Highlight the current row
+set textwidth=80
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
@@ -65,9 +92,6 @@ nmap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
 
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
-set mouse+=a
 
 " system clipboard
 set clipboard=unnamed
