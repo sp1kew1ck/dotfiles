@@ -1,5 +1,3 @@
-" Comments in Vimscript start with a `"`.
-
 " If you open this file in Vim, it'll be syntax highlighted for you.
 
 " Vim is based on Vi. Setting `nocompatible` switches from the default
@@ -30,9 +28,14 @@ filetype plugin indent on
 " Disable the default Vim startup message.
 set shortmess+=I
 
+" Supports redrawing to improve performance
+set ttyfast
+set lazyredraw
+
 " ================ indent ================
 
-set expandtab " Use spaces instead of tabs
+" Use spaces instead of tabs
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -58,12 +61,15 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
 augroup END
 
-set cursorline " Highlight the current row
+" Highlight the current row
+set cursorline
 
 " Displays automatic line wrapping, without inserting newline characters.
 set wrap
-set wrapmargin=2 " The number of blank characters between the line break and the right edge of the editing window.
-set linebreak " Do not wrap inside words
+" The number of blank characters between the line break and the right edge of the editing window.
+set wrapmargin=2
+" Do not wrap inside words
+set linebreak
 " set textwidth=80
 
 " When scrolling vertically, 
@@ -75,6 +81,10 @@ set laststatus=2
 
 " Display the current cursor position (row and column) in the status bar.
 set ruler
+set rulerformat=%70(%=\:b%n%y[%{&fenc==\#\"\"?&encoding:&fenc},%{&ff}]\ %l,%c%V\ %P%)
+
+set background=dark
+colorscheme gruvbox
 
 " ================ search ================
 
@@ -86,11 +96,12 @@ set smartcase
 
 " Enable searching as you type, rather than waiting till you press enter.
 set incsearch
-set hlsearch " highlight 
+" highlight
+set hlsearch
 
 " When the cursor encounters a parenthesis,
 " the corresponding parenthesis is automatically highlighted.
-set showmatch  
+set showmatch
 
 " ================ edit ================
 
@@ -117,8 +128,7 @@ set clipboard=unnamed
 " auto change pwd when open new file
 set autochdir
 
-" keep undo history
-set undofile
+set swapfile
 
 " auto reload file when change by others
 set autoread
@@ -131,6 +141,10 @@ set spell spelllang=en_us
 " automatically complete the bottom operation commands.
 set wildmenu
 set wildmode=longest:list,full
+
+" Making the Invisible Visible
+set list
+set listchars=tab:│\ ,trail:·,nbsp:␣,extends:»,precedes:«
 
 " ================ shortcut ================
 
