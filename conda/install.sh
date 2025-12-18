@@ -13,11 +13,11 @@ if command -v conda &> /dev/null; then
 fi
 # -----------------------------
 
-MINIFORGE_INSTALLER="Miniforge3-Linux-x86_64.sh"
+MINIFORGE_INSTALLER="Miniforge3-$(uname)-$(uname -m).sh"
 MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download/${MINIFORGE_INSTALLER}"
 # 定义要检查和追加的 Conda 激活行 (使用 $HOME 以确保路径正确)
 # CONDA_EVAL_LINE='eval "$($HOME/miniforge3/bin/conda shell.bash hook)"'
-BASHRC="$HOME/.bashrc"
+# BASHRC="$HOME/.bashrc"
 
 # 1. install miniforge
 
@@ -36,7 +36,7 @@ echo "3. Running 'conda init' for standard shell setup..."
 export PATH="$HOME/miniforge3/bin:$PATH"
 conda init
 
-echo "4. Checking for single-line Conda hook in $BASHRC..."
+# echo "4. Checking for single-line Conda hook in $BASHRC..."
 # -q: quiet mode
 # -F: fixed string search
 # if ! grep -qF "$CONDA_EVAL_LINE" "$BASHRC"; then
@@ -52,4 +52,4 @@ echo "4. Checking for single-line Conda hook in $BASHRC..."
 # fi
 
 echo "Miniforge installation and configuration successfully complete."
-echo "Please run 'source $BASHRC' or restart your terminal to activate Conda."
+echo "Please restart your terminal to activate Conda."

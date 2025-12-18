@@ -23,6 +23,10 @@ fi
 if [ -f ~/.functions ]; then
     . ~/.functions
 fi
+# Local config
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
+fi
 
 # ------------2. Prompt (PS1) and Terminal Settings------------
 
@@ -86,16 +90,35 @@ fi
 
 # 4. Third-party tool initialization
 
-# conda
-# Check if conda exists
-if [ -f "$HOME/miniforge3/bin/conda" ]; then
-    # make sure shell.bash hook can be executed
-    if [ -x "$HOME/miniforge3/bin/conda" ]; then
-        eval "$($HOME/miniforge3/bin/conda shell.bash hook)"
-    fi
-fi
-
 # starship
 if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$("$HOME/miniforge3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE="$HOME/miniforge3/bin/mamba"
+export MAMBA_ROOT_PREFIX="$HOME/miniforge3"
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
