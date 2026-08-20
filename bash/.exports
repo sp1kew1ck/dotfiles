@@ -3,6 +3,7 @@
 # Ensure that user-installed programs take precedence over system-provided ones
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH";
 export PKG_CONFIG_PATH="$HOME/.local/lib/pkgconfig:$HOME/.local/lib64/pkgconfig:${PKG_CONFIG_PATH:-}"
+export LD_LIBRARY_PATH="$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
 # set Python I/O encodeding to UTF-8 to avoid encoding issues
 export PYTHONIOENCODING='UTF-8';
