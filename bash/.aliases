@@ -12,7 +12,7 @@ alias ll="ls -lhF --color=auto"
 alias la="ls -lhAF --color=auto"
 
 # ------------git------------
-alias gg="git log --graph --pretty=oneline --abbrev-commit --decorate"
+alias glg="git log --graph --pretty=oneline --abbrev-commit --decorate"
 
 # -----------grep-----------
 alias grep='grep --color=auto'
